@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка 1 января на воскресенье</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Проверка 1 января на воскресенье</h1>
+<button onclick="checkSundays()">Проверить</button>
+
+<div class="result" id="result"></div>
+
+<script>
+    function checkSundays() {
+        const startYear = 2014;
+        const endYear = 2050;
+        let yearsWithSundays = [];
+        
+        // Проверка всех годов от startYear до endYear
+        for (let year = startYear; year <= endYear; year++) {
+            const date = new Date(year, 0, 1); // 1 января
+            if (date.getDay() === 0) { // 0 соответствует воскресенью
+                yearsWithSundays.push(year);
+            }
+        }
+        
+        // Подготовка вывода
+        const count = yearsWithSundays.length;
+        let resultMessage = `${count} раз(а)\n`;
+
+        yearsWithSundays.forEach(year => {
+            resultMessage += `1 января - это воскресенье в ${year}\n`;
+        });
+
+        // Отображение результата
+        document.getElementById('result').innerText = resultMessage;
+    }
+</script>
+
+</body>
+</html>
