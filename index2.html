@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текущее время и день</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Текущее время и день</h1>
+<div class="result" id="result"></div>
+
+<script>
+    function displayCurrentDateTime() {
+        const daysOfWeek = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+        const now = new Date();
+        
+        // Получение текущего дня недели
+        const dayName = daysOfWeek[now.getDay()];
+        
+        // Получение текущего времени
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        
+        // Определение AM/PM и корректировка часов
+        const amPm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12 || 12; // Преобразование в 12-часовой формат
+
+        // Форматирование вывода
+        const formattedTime = `${hours} ${amPm} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+        
+        // Отображение результата
+        document.getElementById('result').innerText = `Сегодня: ${dayName}.\nТекущее время: ${formattedTime}.`;
+    }
+
+    displayCurrentDateTime();
+</script>
+
+</body>
+</html>
