@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер температур</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Конвертер температур</h1>
+<div>
+    <label for="celsius">Цельсий:</label>
+    <input type="number" id="celsius" placeholder="Введите температуру в °C">
+    <button onclick="convertCelsiusToFahrenheit()">Конвертировать в °F</button>
+</div>
+<div>
+    <label for="fahrenheit">Фаренгейт:</label>
+    <input type="number" id="fahrenheit" placeholder="Введите температуру в °F">
+    <button onclick="convertFahrenheitToCelsius()">Конвертировать в °C</button>
+</div>
+
+<div class="result" id="result"></div>
+
+<script>
+    function convertCelsiusToFahrenheit() {
+        const celsius = parseFloat(document.getElementById('celsius').value);
+        if (!isNaN(celsius)) {
+            const fahrenheit = (celsius * 9/5) + 32;
+            document.getElementById('result').innerText = `${celsius}°C это ${fahrenheit.toFixed(2)}°F.`;
+        } else {
+            document.getElementById('result').innerText = 'Пожалуйста, введите корректное значение в °C.';
+        }
+    }
+
+    function convertFahrenheitToCelsius() {
+        const fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
+        if (!isNaN(fahrenheit)) {
+            const celsius = (fahrenheit - 32) * 5/9;
+            document.getElementById('result').innerText = `${fahrenheit}°F это ${celsius.toFixed(2)}°C.`;
+        } else {
+            document.getElementById('result').innerText = 'Пожалуйста, введите корректное значение в °F.';
+        }
+    }
+</script>
+
+</body>
+</html>
