@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Определение високосного года</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Определение високосного года</h1>
+<div>
+    <label for="year">Введите год:</label>
+    <input type="number" id="year" placeholder="Введите год">
+    <button onclick="checkLeapYear()">Проверить</button>
+</div>
+
+<div class="result" id="result"></div>
+
+<script>
+    function checkLeapYear() {
+        const year = parseInt(document.getElementById('year').value);
+        let result = '';
+
+        if (isNaN(year)) {
+            result = 'Пожалуйста, введите корректное значение года.';
+        } else {
+            // Проверка на високосный год
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                result = `${year} - високосный год.`;
+            } else {
+                result = `${year} - не високосный год.`;
+            }
+        }
+
+        document.getElementById('result').innerText = result;
+    }
+</script>
+
+</body>
+</html>
